@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="styleongkir.css" type="text/css">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+    content="width=device-width,
+    initial-scale=1.0">
+    
+    <title>Program Cek Ongkir</title>
+    
+</head>
+
+<body>
+    <header>
+        <h1><canter>Cek Ongkir</canter></h1>
+    </header>
+    <main>
+        
+        <div class="form-container">
+            <div>
+                <div class="formCariNilai" action="">
+                    <p><i class="fas fa-info-circle"></i>
+                    Info Harga</p>
+                    <table border="1">
+                        <tr>
+                            <th>*</th>
+                            <th>Bandung</th>
+                            <th>Yogyakarta</th>
+                            <th>Jakarta</th>
+                        </tr>
+                        <tr>
+                            <td>Reguler</td>
+                            <td>22000</td>
+                            <td>18000</td>
+                            <td>24000</td>
+                        </tr>
+                        <tr>
+                            <td>Express</td>
+                            <td>32000</td>
+                            <td>28000</td>
+                            <td>34000</td>
+
+                        </tr>
+                    </table>
+                    <select class="inputNilai"
+                    id="inputKelas">
+                    <option id="">Pilih Jenis Pengiriman</option>
+                    <option>Reguler</option>
+                    <option>Express</option>
+                    </select>
+                    <select class="inputNilai" 
+                    id="inputKota">
+                        <option>Pilih Tujuan</option>
+                        <option>Bandung</option>
+                        <option>Yogyakarta</option>
+                        <option>Jakarta</option>
+                    </select>
+                    <p><i class="fas fa-info-circle"></i>
+                    Jika pesan outfit lebih dari 10,
+                    diskon ongkir 5%</p>
+                    <input class="inputNilai
+                    inputNilai-joutfit" id="jumlahOutfit"
+                    type="number"
+                        placeholder="Jumlah Outfit">
+
+                    <input class="btnHitung"
+                    type="button" value="Hitung" onclick="Hitung();"
+                    id="buttonHitungOutfit">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="tabelHasil">
+            <table class="anwserTable">
+                <tr>
+                    <td class="label">Harga Sebelum Diskon</td>
+                    <td class="price" id="harga"></td>
+                </tr>
+                <tr>
+                    <td class="label">Diskon</td>
+                    <td class="price" id="discount"></td>
+                </tr>
+                <tr>
+                    <td class="label label-total">Total</td>
+                    <td class="price price-total" id="total"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="btnBack" >
+            <a href="indexx.html">Back to Menu</a>
+        </div>
+    </main>
+    <script type="text/javascript">
+        function Hitung(){
+            var inputKelas = document.getElementById("inputKelas").value;
+            var inputKota = document.getElementById("inputKota").value;
+            var jumlahOutfit = document.getElementById("jumlahOutfit").value;
+            let price;
+    if (inputKelas==='Reguler') {
+        if (inputKota==='Bandung') {
+            price = 22000;
+        } else if (inputKota==='Yogyakarta') {
+            price = 18000;
+        } else  {
+            price = 24000;
+        }
+    } else if(inputKelas==='Express'){
+        if (inputKota==='Bandung') {
+            price = 32000;
+        } else if (inputKota==='Yogyakarta') {
+            price = 28000;
+        } else {
+            price = 34000;
+        }    
+    }
+    const hargaAsli= price * jumlahOutfit;
+
+
+    let discount;
+    if (jumlahOutfit > 10) {
+        discount = (hargaAsli * 5) /100
+    } else {
+        discount = 0;
+    }
+    const hargaTotal = hargaAsli - discount;
+
+    document.getElementById('harga').innerHTML = 'Rp.'+hargaAsli;
+    document.getElementById('discount').innerHTML = 'Rp.'+discount;
+    document.getElementById('total').innerHTML = 'Rp.'+hargaTotal;
+    
+        }
+    </script>
+    
+</body>
+</html>
